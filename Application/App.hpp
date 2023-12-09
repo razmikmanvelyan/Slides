@@ -1,17 +1,33 @@
 #pragma once
-#include "View/IOController.hpp"
-#include "Controller/Evaluator/Evaluator.hpp"
 
-class App {
+// #include "GUI/Controller.hpp"
+#include "CLI/Controller.hpp"
+#include "GUI/Controller.hpp"
+#include "Document/Document.hpp"
+#include "Director/Director.hpp"
+#include "Rendering/Render.hpp"
+#include <memory>
 
+class Document;
+class Director;
+class Render;
+
+class App
+{
 public:
-    App();
 
-public:
-    void run();
+    static std::shared_ptr<ControllerBase> getController(ControllerType type = ControllerType::CLI);
+    static std::shared_ptr<Document> getDocument();
+    static std::shared_ptr<Director> getDirector();
+    static std::shared_ptr<Render> getRenderer();
 
 private:
-    IOController _io;
-    Evaluator _evaluator;
-    Document _document;
+    App() {}
+    ~App() {} 
+    App(const App&);
+    App& operator=(const App&);
+
+private:
+    static std::shared_ptr<ControllerBase> _controller;
+    static std::shared_ptr<Document> _document;
 };
