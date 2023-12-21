@@ -10,12 +10,9 @@
 class ShapeLib 
 {
 public:
-    // struct InvalidShapeException : Exception { using Exception::Exception; };
-
-public:
     static std::shared_ptr<ShapeLib> instance();
 
-    std::shared_ptr<ShapeBase> get(const std::string& shape);
+    std::shared_ptr<ShapeBase> get(std::shared_ptr<Item> item);
 
 private:
     ShapeLib();

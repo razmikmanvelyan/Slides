@@ -8,6 +8,6 @@
 class Render
 {
 public:
-    void draw(std::shared_ptr<Slide>);
+    void draw(std::shared_ptr<Slide>, QPaintDevice* device);
     void print(std::shared_ptr<Slide>, std::ostream& stream);
 };

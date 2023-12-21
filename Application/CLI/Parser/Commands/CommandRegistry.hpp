@@ -12,6 +12,9 @@
 #include "DelCommand.hpp"
 #include "DisplayCommand.hpp"
 #include "ListCommand.hpp"
+#include "SaveCommand.hpp"
+#include "LoadCommand.hpp"
+#include "DrawCommand.hpp"
 
 enum CommandType {
     ADD

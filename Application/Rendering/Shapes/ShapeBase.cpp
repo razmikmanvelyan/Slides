@@ -14,3 +14,8 @@ void ShapeBase::setColor(const std::string& color)
 {
     _color = color;
 }
+
+void ShapeBase::setBoundingBox(const BoundingBox& boundingBox)
+{
+    _boundingBox = boundingBox;
+}

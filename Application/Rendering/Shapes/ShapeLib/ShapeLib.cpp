@@ -12,12 +12,12 @@ std::shared_ptr<ShapeLib> ShapeLib::instance()
     return _instance;
 }
 
-std::shared_ptr<ShapeBase> ShapeLib::get(const std::string& shape) 
+std::shared_ptr<ShapeBase> ShapeLib::get(std::shared_ptr<Item> item) 
 {
-    auto it = _shapes.find(shape);
+    auto it = _shapes.find(item->getShape());
     if (it != _shapes.end()) 
     {
-        return it->second;
+        return std::dynamic_pointer_cast<ShapeBase>(it->second->clone(item));
     }
 
     throw Exception("Invalid Shape name.");

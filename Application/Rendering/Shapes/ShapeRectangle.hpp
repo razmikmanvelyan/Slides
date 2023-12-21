@@ -3,11 +3,12 @@
 #include "ShapeBase.hpp"
 #include "IVisualDisplayable.hpp"
 
-class ShapeRectangle : public ShapeBase, public IVisualDisplayable
+class ShapeRectangle : public ShapeBase
 {
 public:
     ShapeRectangle() = default;
+    std::shared_ptr<IShape> clone(std::shared_ptr<Item> item) const override;
 
 public:
-    void draw() override;
+    void draw(QPainter&) override;
 };

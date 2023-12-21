@@ -22,6 +22,15 @@ std::map<std::string, std::function<std::unique_ptr<Command>(std::vector<std::an
     {"LIST", [](std::vector<std::any> args) { 
         return std::make_unique<ListCommand>(std::any_cast<Arguments>(args[0])); 
     }},
+    {"SAVE", [](std::vector<std::any> args) { 
+        return std::make_unique<SaveCommand>(std::any_cast<Arguments>(args[0])); 
+    }},
+    {"LOAD", [](std::vector<std::any> args) { 
+        return std::make_unique<LoadCommand>(std::any_cast<Arguments>(args[0])); 
+    }},
+    {"DRAW", [](std::vector<std::any> args) { 
+        return std::make_unique<DrawCommand>(std::any_cast<Arguments>(args[0])); 
+    }},
 };
 
 bool CommandRegistry::isCommand(std::string commandName){

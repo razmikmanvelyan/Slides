@@ -7,7 +7,7 @@
 #include <memory>
 #include <algorithm>
 
-class Slide
+class Slide : public JsonSerializable
 {
 public:
     using Items = std::vector<std::shared_ptr<Item>>;
@@ -24,9 +24,11 @@ public:
     const Items& getItems() const;
     int getId() const;
 
+    QJsonObject toJson() const override;
+    void fromJson(const QJsonObject&) override;
+
 private:
     static int IdCounter;
-
     Items _items;
-    const int _id;
+    int _id;
 };
