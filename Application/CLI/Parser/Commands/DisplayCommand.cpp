@@ -1,6 +1,6 @@
 #include "DisplayCommand.hpp"
 #include "../../../Document/Document.hpp"
-#include "../../../Rendering/Render.hpp"
+#include "../../../Rendering/Renderer.hpp"
 
 DisplayCommand::DisplayCommand(const Arguments& argumentsMap)
     : Command(argumentsMap) {}

@@ -14,7 +14,6 @@ public:
     {
         return _what.c_str();
     }
-
 private:
     std::string _what;
 };

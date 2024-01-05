@@ -1,9 +1,10 @@
 #include "Item.hpp"
 
-Item::Item(const std::string& shape, const Position& pos, const std::string& color)
+Item::Item(const std::string& shape, const Position& pos, const std::string& color, const std::string& text)
     : _shape(shape)
     , _position(pos)
     , _color(color)
+    , _text(text)
     , _id(IdCounter++)
 {}
 
@@ -27,6 +28,16 @@ void Item::setColor(const std::string& color)
     _color = color;
 }
 
+std::string Item::getText() const
+{
+    return _text;
+}
+
+void Item::setText(const std::string& text)
+{
+    _text = text;
+}
+
 auto Item::getPosition() const -> Position
 {
     return _position;
@@ -48,6 +59,7 @@ QJsonObject Item::toJson() const {
     json["id"] = _id;
     json["shape"] = QString::fromStdString(_shape);
     json["color"] = QString::fromStdString(_color);
+    json["text"] = QString::fromStdString(_text);
     json["tl_x"] = std::get<0>(_position);
     json["tl_y"] = std::get<1>(_position);
     json["rb_x"] = std::get<2>(_position);
@@ -71,6 +83,10 @@ void Item::fromJson(const QJsonObject& jsonObject) {
         _color = jsonObject["color"].toString().toStdString();
     }
 
+    if (jsonObject.contains("text") && jsonObject["text"].isString())
+    {
+        _text = jsonObject["text"].toString().toStdString();
+    }
     if (jsonObject.contains("tl_x") && jsonObject["tl_x"].isDouble()
         && jsonObject.contains("tl_y") && jsonObject["tl_y"].isDouble()
         && jsonObject.contains("rb_x") && jsonObject["rb_x"].isDouble()

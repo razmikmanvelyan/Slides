@@ -5,7 +5,7 @@
 
 #include <ostream>
 
-class Render
+class Renderer
 {
 public:
     void draw(std::shared_ptr<Slide>, QPaintDevice* device);

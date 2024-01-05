@@ -7,7 +7,7 @@ void LoadCommand::exec()
 {
     auto filePathIt = _argumentsMap.find("-filePath");
     if (filePathIt == _argumentsMap.end()) {
-        throw Exception("The -filePath argument is undefined.");
+        throw InvalidArgumentException("The -filePath argument is undefined.");
     }
     QByteArray byteArrayData;
     const QString& filePath = QString::fromStdString(filePathIt->second);

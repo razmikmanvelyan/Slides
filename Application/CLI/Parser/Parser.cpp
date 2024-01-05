@@ -2,7 +2,7 @@
 
 std::unique_ptr<Command> Parser::parse(const std::string& line){
     if (line.empty()) 
-        throw Exception("Empty Line");
+        throw EmptyLineException("Empty Line");
 
     Tokens tokens = _tokenizer.getTokens(line);
     Arguments args;

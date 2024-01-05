@@ -7,7 +7,7 @@ void SaveCommand::exec()
 {
     auto filePathIt = _argumentsMap.find("-filePath");
     if (filePathIt == _argumentsMap.end()) {
-        throw Exception("The -filePath argument is undefined.");
+        throw InvalidArgumentException("The -filePath argument is undefined.");
     }
     const QString& filePath = QString::fromStdString(filePathIt->second);
     QFile file(filePath);

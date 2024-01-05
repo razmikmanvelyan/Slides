@@ -19,6 +19,6 @@ void DelCommand::exec()
         }
     }
     catch (std::logic_error e){
-        throw Exception("Arguments invalid for Del command.");
+        throw InvalidArgumentException("Arguments invalid for Del command.");
     }   
 }

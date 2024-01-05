@@ -13,9 +13,15 @@ void DrawCommand::exec()
         QImage image(200, 200, QImage::Format_RGB32);
         image.fill(Qt::white);
         render->draw(document->getSlideById(id), &image);
-        image.save("output.png");
+        try {
+            auto filePath = _argumentsMap.at("-filePath");
+            image.save(QString::fromStdString(filePath));
+        }
+        catch (std::logic_error e){
+            throw InvalidArgumentException("The -filePath argument is undefined.");
+        }
     }
     catch (std::logic_error e){
-        throw Exception("The -id argument is undefined.");
+        throw InvalidArgumentException("The -id argument is undefined.");
     }
 }

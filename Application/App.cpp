@@ -45,12 +45,12 @@ std::shared_ptr<Director> App::getDirector()
     return director;
 }
 
-std::shared_ptr<Render> App::getRenderer()
+std::shared_ptr<Renderer> App::getRenderer()
 {
-    static std::shared_ptr<Render> renderer;
+    static std::shared_ptr<Renderer> renderer;
     if (!renderer)
     {
-        renderer = std::make_shared<Render>();
+        renderer = std::make_shared<Renderer>();
     }
     
     return renderer;

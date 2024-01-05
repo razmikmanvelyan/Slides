@@ -7,6 +7,9 @@ using Arguments = std::unordered_map<std::string,std::string>;
 
 class Command {
 public:
+    struct InvalidArgumentException : Exception { using Exception::Exception; };
+    
+public:
     Command(const Arguments& argumentsMap) : _argumentsMap(argumentsMap) {}
         
     virtual ~Command() {}

@@ -8,11 +8,13 @@
 
 class Parser {
 public:
-    std::unique_ptr<Command> parse(const std::string& line);
+    struct EmptyLineException : Exception { using Exception::Exception; };
+
+public:
+    std::unique_ptr<Command> parse(const std::string&);
 
 private:
     Token getNext(Tokens&);
 private:
     Tokenizer _tokenizer;
-    std::shared_ptr<Director> _director;
 };

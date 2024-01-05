@@ -18,10 +18,12 @@ public:
 public:
     void setName(const std::string&);
     void setColor(const std::string&);
+    void setText(const std::string&);
     void setBoundingBox(const BoundingBox&);
 
 protected:
     std::string _name;
     std::string _color;
+    std::string _text;
     BoundingBox _boundingBox;
 };

@@ -1,6 +1,6 @@
-#include "Render.hpp"
+#include "Renderer.hpp"
 
-void Render::draw(std::shared_ptr<Slide> slide, QPaintDevice* device)
+void Renderer::draw(std::shared_ptr<Slide> slide, QPaintDevice* device)
 {
     QPainter painter(device);
     for (const auto& item : slide->getItems())
@@ -10,7 +10,7 @@ void Render::draw(std::shared_ptr<Slide> slide, QPaintDevice* device)
     }
 }
 
-void Render::print(std::shared_ptr<Slide> slide, std::ostream& stream)
+void Renderer::print(std::shared_ptr<Slide> slide, std::ostream& stream)
 {
     for (const auto& item : slide->getItems())
     {

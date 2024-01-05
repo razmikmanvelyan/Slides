@@ -6,7 +6,7 @@ AddCommand::AddCommand(const Arguments& argumentsMap)
 void AddCommand::exec() {
     auto typeIt = _argumentsMap.find("-type");
     if (typeIt == _argumentsMap.end()) {
-        throw Exception("The -type argument is undefined.");
+        throw InvalidArgumentException("The -type argument is undefined.");
     }
 
     std::string type = typeIt->second;
@@ -19,6 +19,7 @@ void AddCommand::exec() {
         auto slideIdIt = _argumentsMap.find("-slide");
         auto shapeIt = _argumentsMap.find("-shape");
         auto colorIt = _argumentsMap.find("-color");
+        auto textIt = _argumentsMap.find("-text");
         auto lt_xIt = _argumentsMap.find("-lt_x");
         auto lt_yIt = _argumentsMap.find("-lt_y");
         auto rb_xIt = _argumentsMap.find("-rb_x");
@@ -26,7 +27,7 @@ void AddCommand::exec() {
 
         if (slideIdIt == _argumentsMap.end() || shapeIt == _argumentsMap.end() ||
             colorIt == _argumentsMap.end() || lt_xIt == _argumentsMap.end() || lt_yIt == _argumentsMap.end() || rb_xIt == _argumentsMap.end() || rb_yIt == _argumentsMap.end()) {
-            throw Exception("Arguments describing the Item are not defined.");
+            throw InvalidArgumentException("Arguments describing the Item are not defined.");
         }
 
         int slideId = std::stoi(slideIdIt->second);
@@ -37,10 +38,18 @@ void AddCommand::exec() {
         int rb_x = std::stoi(rb_xIt->second);
         int rb_y = std::stoi(rb_yIt->second);
 
-        auto item = std::make_shared<Item>(shape, Item::Position{lt_x, lt_y, rb_x, rb_y}, color);
+
+
+        std::shared_ptr<Item> item;
+        if(textIt == _argumentsMap.end()){
+            item = std::make_shared<Item>(shape, Item::Position{lt_x, lt_y, rb_x, rb_y}, color);
+        }
+        else{
+            item = std::make_shared<Item>(shape, Item::Position{lt_x, lt_y, rb_x, rb_y}, color, textIt->second);
+        }
         auto action = std::make_shared<AddItemAction>(item, slideId);
         App::getDirector()->exec(action);
     } else {
-        throw Exception("The value of the -type argument is incorrect.");
+        throw InvalidArgumentException("The value of the -type argument is incorrect.");
     }
 }

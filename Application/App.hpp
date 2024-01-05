@@ -5,12 +5,12 @@
 #include "GUI/Controller.hpp"
 #include "Document/Document.hpp"
 #include "Director/Director.hpp"
-#include "Rendering/Render.hpp"
+#include "Rendering/Renderer.hpp"
 #include <memory>
 
 class Document;
 class Director;
-class Render;
+class Renderer;
 
 class App
 {
@@ -19,7 +19,7 @@ public:
     static std::shared_ptr<ControllerBase> getController(ControllerType type = ControllerType::CLI);
     static std::shared_ptr<Document> getDocument();
     static std::shared_ptr<Director> getDirector();
-    static std::shared_ptr<Render> getRenderer();
+    static std::shared_ptr<Renderer> getRenderer();
 
 private:
     App() {}
