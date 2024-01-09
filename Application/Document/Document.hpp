@@ -6,7 +6,7 @@
 #include <vector>
 #include <memory>
 
-class Document : public JsonSerializable
+class Document
 {
 public:
     using Slides = std::vector<std::shared_ptr<Slide>>;
@@ -17,10 +17,7 @@ public:
     void addSlide(std::shared_ptr<Slide>);
     void delSlide(std::shared_ptr<Slide>);
     std::shared_ptr<Slide> getSlideById(int) const;
-    const Slides& getSlides() const;
-
-    QJsonObject toJson() const override;
-    void fromJson(const QJsonObject&) override;
+    Slides& getSlides();
 
 private:
     Slides _slides;

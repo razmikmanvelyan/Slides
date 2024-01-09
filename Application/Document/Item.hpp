@@ -1,8 +1,7 @@
 #pragma once
-#include "../Common/Serialization/JsonSerializable.hpp"
 #include <string>
 
-class Item : public JsonSerializable
+class Item
 {
 public:
     using Position = std::tuple<int, int, int, int>;
@@ -24,10 +23,7 @@ public:
     void setPosition(const Position&);
 
     int getId() const;
-
-    QJsonObject toJson() const override;
-    void fromJson(const QJsonObject&) override;
-
+    void setId(int);
 
 private:
     static int IdCounter;

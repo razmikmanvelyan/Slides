@@ -12,7 +12,7 @@ void SaveCommand::exec()
     const QString& filePath = QString::fromStdString(filePathIt->second);
     QFile file(filePath);
     if (file.open(QIODevice::WriteOnly)) {
-        qint64 bytesWritten = file.write(App::getDocument()->toSerializedData());
+        qint64 bytesWritten = file.write(JsonSerializer::getInstance().serializeDocument(App::getDocument()));
         if (bytesWritten == -1) {
             qDebug() << "Error writing to file:" << file.errorString();
         }

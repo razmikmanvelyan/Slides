@@ -1,6 +1,7 @@
 #pragma once
 #include "Command.hpp"
 #include "../../../App.hpp"
+#include "../../../Common/Serialization/JsonSerializer.hpp"
 #include <QJsonDocument>
 #include <QFile>
 #include <QSaveFile>

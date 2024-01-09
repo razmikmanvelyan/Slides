@@ -25,5 +25,5 @@ void LoadCommand::exec()
     else {
         qDebug() << "Could not open file:" << file.errorString();
     }
-    App::getDocument()->fromSerializedData(byteArrayData);
+    JsonSerializer::getInstance().deserializeDocument(byteArrayData, App::getDocument());
 }
